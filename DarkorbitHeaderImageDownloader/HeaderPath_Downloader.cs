@@ -33,30 +33,6 @@ namespace ImageDownloader
                     responseStream.Close();
                     imageResponse.Close();
                     bw.Write(imageBytes);
-
-
-                    static void clear()
-                    {
-
-                        Thread.Sleep(1500);
-                        Console.SetCursorPosition(0, 0);
-
-                    }
-                    var client = new WebClient();
-
-                    client.DownloadProgressChanged += (o, e) =>
-                    {
-
-                        Console.Write(e.ProgressPercentage + "% ");
-                        clear();
-
-
-                    };
-
-                    client.DownloadFileAsync(new Uri("http://XXX"), "file");
-
-                    Console.ReadKey();
-
                 }
                 catch (WebException ex)
                 {
