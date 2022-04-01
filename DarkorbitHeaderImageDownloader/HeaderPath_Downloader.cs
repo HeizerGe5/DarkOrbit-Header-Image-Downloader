@@ -11,7 +11,7 @@ namespace ImageDownloader
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 600; i++)
+            for (int i = 1; i <= 650; i++)
             {
                 try
                 {
@@ -33,13 +33,17 @@ namespace ImageDownloader
                     responseStream.Close();
                     imageResponse.Close();
                     bw.Write(imageBytes);
+
+                    Console.WriteLine($"Downloading ShipID.:{i}");
                 }
                 catch (WebException ex)
                 {
                     HttpWebResponse webResponse = (HttpWebResponse)ex.Response;
                     if (webResponse.StatusCode == HttpStatusCode.NotFound)
                     {
+                        Console.WriteLine($"skipped Website Response:{HttpStatusCode.NotFound}");
                         continue;
+
                     }
                 }
             } 
